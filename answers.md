@@ -677,3 +677,34 @@ Kết quả:
 ```javascript id="5st8gq"
 16
 ```
+
+# Phần C
+## Câu C1 — Refactor Code
+### Refactor Code
+
+```js
+const processOrders = (orders) =>
+    orders
+        .filter(
+            order =>
+                order.status === "completed" &&
+                order.total > 100000
+        )
+        .map(({ id, customer, total }) => ({
+            id,
+            customer,
+            total,
+            discount: total * 0.1,
+            finalTotal: total - total * 0.1
+        }))
+        .sort(
+            (a, b) => b.finalTotal - a.finalTotal
+        );
+```
+
+### Giải thích
+- Dùng filter() để lọc đơn hàng completed và total > 100000
+- Dùng map() để tạo object mới chứa id, customer, total, discount, finalTotal
+- Dùng destructuring để lấy dữ liệu ngắn gọn hơn
+- Dùng arrow function giúp code hiện đại, dễ đọc
+- Dùng sort() để sắp xếp finalTotal giảm dần
