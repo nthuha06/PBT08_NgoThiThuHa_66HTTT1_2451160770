@@ -708,3 +708,35 @@ const processOrders = (orders) =>
 - Dùng destructuring để lấy dữ liệu ngắn gọn hơn
 - Dùng arrow function giúp code hiện đại, dễ đọc
 - Dùng sort() để sắp xếp finalTotal giảm dần
+
+## Câu C2 — Thiết kế API miniArray
+
+### Ý tưởng
+
+Tự xây dựng lại:
+
+- map()
+- filter()
+- reduce()
+
+mà không dùng built-in methods của JavaScript.
+
+### Giải thích
+
+#### map()
+
+- Duyệt từng phần tử bằng vòng lặp
+- Gọi callback function fn()
+- Push kết quả mới vào mảng result
+
+#### filter()
+
+- Duyệt từng phần tử
+- Nếu điều kiện đúng → thêm vào result
+- Sai → bỏ qua
+
+#### reduce()
+
+- Dùng accumulator để lưu giá trị tích lũy
+- Mỗi vòng lặp cập nhật accumulator
+- Trả về kết quả cuối cùng
