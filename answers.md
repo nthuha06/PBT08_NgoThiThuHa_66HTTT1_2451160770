@@ -294,3 +294,196 @@ let: 1
 let: 2
 ```
 
+## Câu A3 - Array Methods
+
+### 1. Lấy các số chẵn
+
+```javascript id="t0e5bc"
+const evenNumbers = nums.filter(num => num % 2 === 0);
+
+console.log(evenNumbers);
+```
+
+Kết quả:
+
+```javascript id="55f4f0"
+[2, 4, 6, 8, 10]
+```
+
+Giải thích:
+
+* `filter()` dùng để lọc phần tử.
+* `num % 2 === 0` nghĩa là số chẵn.
+* Các số chẵn sẽ được giữ lại trong mảng mới.
+
+### 2. Nhân mỗi số với 3
+
+```javascript id="m18vhf"
+const multiplied = nums.map(num => num * 3);
+
+console.log(multiplied);
+```
+
+Kết quả:
+
+```javascript id="3x5n1e"
+[3, 6, 9, 12, 15, 18, 21, 24, 27, 30]
+```
+
+Giải thích:
+
+* `map()` dùng để biến đổi từng phần tử.
+* Mỗi số được nhân với 3.
+* Trả về mảng mới sau khi xử lý.
+
+### 3. Tính tổng tất cả phần tử
+
+```javascript id="e1j6wk"
+const total = nums.reduce((sum, num) => sum + num, 0);
+
+console.log(total);
+```
+
+Kết quả:
+
+```javascript id="9vdq9m"
+55
+```
+
+Giải thích:
+
+* `reduce()` dùng để gộp các phần tử thành 1 giá trị.
+* `sum` là biến cộng dồn.
+* `0` là giá trị khởi tạo ban đầu.
+
+Quá trình tính:
+
+```javascript id="cljofe"
+0 + 1 = 1
+1 + 2 = 3
+3 + 3 = 6
+...
+```
+
+Cuối cùng được:
+
+```javascript id="ybrf38"
+55
+```
+
+### 4. Tìm số đầu tiên lớn hơn 7
+
+```javascript id="vex4yr"
+const firstGreaterThan7 = nums.find(num => num > 7);
+
+console.log(firstGreaterThan7);
+```
+
+Kết quả:
+
+```javascript id="tn0hdk"
+8
+```
+
+Giải thích:
+
+* `find()` trả về phần tử đầu tiên thỏa điều kiện.
+* Số đầu tiên lớn hơn 7 là 8.
+
+### 5. Kiểm tra có số lớn hơn 10 không
+
+```javascript id="ns8rzi"
+const hasGreaterThan10 = nums.some(num => num > 10);
+
+console.log(hasGreaterThan10);
+```
+
+Kết quả:
+
+```javascript id="5e6u3r"
+false
+```
+
+Giải thích:
+
+* `some()` kiểm tra có ít nhất 1 phần tử thỏa điều kiện hay không.
+* Trong mảng không có số nào lớn hơn 10.
+* Nên kết quả là `false`.
+
+### 6. Kiểm tra tất cả đều lớn hơn 0
+
+```javascript id="hj8vf6"
+const allPositive = nums.every(num => num > 0);
+
+console.log(allPositive);
+```
+
+Kết quả:
+
+```javascript id="8w5lnn"
+true
+```
+
+Giải thích:
+
+* `every()` kiểm tra tất cả phần tử có thỏa điều kiện không.
+* Tất cả các số đều lớn hơn 0.
+* Nên kết quả là `true`.
+
+### 7. Tạo mảng "Số X là chẵn/lẻ"
+
+```javascript id="l0c96z"
+const descriptions = nums.map(
+    num => `Số ${num} là ${num % 2 === 0 ? "chẵn" : "lẻ"}`
+);
+
+console.log(descriptions);
+```
+
+Kết quả:
+
+```javascript id="b0v2r2"
+[
+  "Số 1 là lẻ",
+  "Số 2 là chẵn",
+  "Số 3 là lẻ",
+  ...
+]
+```
+
+Giải thích:
+
+* Dùng `map()` để tạo chuỗi mới cho từng phần tử.
+* Dùng toán tử `? :` để kiểm tra chẵn hoặc lẻ.
+
+### 8. Đảo ngược mảng nhưng không thay đổi mảng gốc
+
+```javascript id="z8j4qm"
+const reversed = [...nums].reverse();
+
+console.log(reversed);
+```
+
+Kết quả:
+
+```javascript id="75yb1p"
+[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+```
+
+Giải thích:
+
+* `reverse()` sẽ làm thay đổi mảng gốc.
+* Dùng spread operator `...nums` để copy mảng trước.
+* Sau đó mới đảo ngược mảng copy.
+
+Mảng gốc vẫn giữ nguyên:
+
+```javascript id="0y2m6t"
+console.log(nums);
+```
+
+Kết quả:
+
+```javascript id="4j0e0w"
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+```
