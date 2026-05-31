@@ -487,3 +487,193 @@ Kết quả:
 ```javascript id="4j0e0w"
 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 ```
+
+## Câu A4 - Object Destructuring & Spread
+### Output phần Destructuring
+
+```javascript id="j8f0u5"
+iPhone 16 25990000 8 Titan
+ReferenceError: specs is not defined
+```
+
+* Giải thích Destructuring
+
+#### Đoạn code:
+
+```javascript id="w4m2nr"
+const { name, price, specs: { ram, color } } = product;
+```
+
+Destructuring giúp lấy dữ liệu từ object nhanh hơn.
+
+Các giá trị được lấy ra:
+
+| Biến  | Giá trị     |
+| ----- | ----------- |
+| name  | "iPhone 16" |
+| price | 25990000    |
+| ram   | 8           |
+| color | "Titan"     |
+
+#### Dòng này:
+
+```javascript id="x3lprn"
+console.log(name, price, ram, color);
+```
+
+Kết quả:
+
+```javascript id="y9t8zt"
+iPhone 16 25990000 8 Titan
+```
+
+#### Dòng này:
+
+```javascript id="r3d4y6"
+console.log(specs);
+```
+
+Sẽ lỗi:
+
+```javascript id="d7v9z1"
+ReferenceError: specs is not defined
+```
+
+Giải thích:
+
+Trong destructuring:
+
+```javascript id="rf7fwp"
+specs: { ram, color }
+```
+
+ta chỉ lấy:
+
+* `ram`
+* `color`
+
+Biến `specs` không được tạo ra nên không thể dùng bên ngoài.
+
+---
+
+### Output phần Spread
+
+```javascript id="pr0txu"
+23990000
+true
+25990000
+```
+
+---
+
+* Giải thích Spread
+
+#### Đoạn code:
+
+```javascript id="94bxkr"
+const updated = { ...product, price: 23990000, sale: true };
+```
+
+Spread operator `...product` dùng để copy object.
+
+Sau đó:
+
+* ghi đè `price`
+* thêm thuộc tính mới `sale`
+
+#### Dòng này:
+
+```javascript id="7j7mdf"
+console.log(updated.price);
+```
+
+Kết quả:
+
+```javascript id="qwwn1p"
+23990000
+```
+
+Vì giá đã được cập nhật.
+
+#### Dòng này:
+
+```javascript id="b1t0u6"
+console.log(updated.sale);
+```
+
+Kết quả:
+
+```javascript id="jl8s0q"
+true
+```
+
+Vì object mới có thêm thuộc tính `sale`.
+
+#### Dòng này:
+
+```javascript id="0gk2ku"
+console.log(product.price);
+```
+
+Kết quả:
+
+```javascript id="2my6nh"
+25990000
+```
+
+Giải thích:
+
+Spread tạo object mới nên object gốc không bị thay đổi.
+
+### Output phần Spread Gotcha
+
+```javascript id="5oyj1n"
+16
+```
+
+* Giải thích
+
+#### Đoạn code:
+
+```javascript id="cw6yxq"
+const copy = { ...product };
+```
+
+Spread chỉ copy shallow copy.
+
+Nghĩa là:
+
+* level đầu được copy mới
+* object lồng bên trong vẫn dùng chung reference
+
+---
+
+#### Đoạn này:
+
+```javascript id="n9o0i7"
+copy.specs.ram = 16;
+```
+
+đã sửa trực tiếp object `specs`.
+
+Vì:
+
+```javascript id="mxwrr6"
+copy.specs === product.specs
+```
+
+nên khi sửa `copy.specs.ram` thì `product.specs.ram` cũng đổi theo.
+
+---
+
+#### Dòng này:
+
+```javascript id="8ub1dw"
+console.log(product.specs.ram);
+```
+
+Kết quả:
+
+```javascript id="5st8gq"
+16
+```
